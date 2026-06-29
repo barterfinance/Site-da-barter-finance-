@@ -1,47 +1,692 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barter Finance | Soluções Imobiliárias e Financeiras</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Barter Finance – Soluções Financeiras e Imobiliárias</title>
+    <meta name="description" content="Há mais de 10 anos oferecendo crédito consignado, financiamento imobiliário e soluções financeiras com transparência." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+
     <style>
-        :root { --navy: #0a1b3d; --gold: #c5a059; --bg: #ffffff; --text: #0a1b3d; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; text-align: center; line-height: 1.6; }
-        .container { max-width: 800px; margin: auto; padding: 60px 20px; }
-        .logo { width: 220px; margin-bottom: 25px; }
-        h1, h2 { color: var(--navy); text-transform: uppercase; letter-spacing: 1px; }
-        .divider { width: 60px; height: 3px; background: var(--navy); margin: 20px auto 40px auto; }
-        .about { margin-bottom: 60px; font-size: 1.1em; color: #444; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .card { background: #fcfcfc; padding: 40px 30px; border: 1px solid #e0e0e0; transition: 0.3s; }
-        .card:hover { border-color: var(--navy); }
-        .btn { display: inline-block; margin-top: 20px; padding: 12px 30px; background: var(--navy); color: #fff; text-decoration: none; font-weight: 600; }
-        .btn:hover { background: var(--gold); }
+        /* ===== RESET E VARIÁVEIS ===== */
+        :root {
+            --color-primary: #0A1B3D;
+            --color-gold: #C8A45A;
+            --color-white: #FFFFFF;
+            --color-gray-light: #F8F9FA;
+            --color-text: #1E293B;
+            --font-sans: 'Inter', -apple-system, sans-serif;
+            --max-width: 1200px;
+            --transition: 0.3s ease;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-text);
+            background: var(--color-white);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+        h1, h2, h3 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--color-primary);
+        }
+        .highlight {
+            color: var(--color-gold);
+        }
+
+        /* ===== BOTÕES ===== */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition);
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: center;
+        }
+        .btn--primary {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+        .btn--primary:hover {
+            background: var(--color-gold);
+            color: var(--color-primary);
+        }
+        .btn--outline {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            background: transparent;
+        }
+        .btn--outline:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+        .btn--whatsapp {
+            background: #25D366;
+            color: white;
+            border: none;
+        }
+        .btn--whatsapp:hover {
+            background: #1DA851;
+        }
+
+        /* ===== HEADER / NAVEGAÇÃO ===== */
+        .header {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(10, 27, 61, 0.08);
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo img {
+            height: 48px;
+            width: auto;
+        }
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+        .logo-text span {
+            color: var(--color-gold);
+        }
+
+        .nav__toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .nav__toggle .hamburger {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--color-primary);
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+        .nav__list {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+        .nav__list a {
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 500;
+            transition: color var(--transition);
+            font-size: 0.95rem;
+        }
+        .nav__list a:hover,
+        .nav__list a.active {
+            color: var(--color-gold);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 4rem 0 3rem;
+            background: var(--color-gray-light);
+        }
+        .hero__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .hero__tag {
+            display: inline-block;
+            background: var(--color-gold);
+            color: var(--color-primary);
+            padding: 0.25rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+        .hero__content h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        .hero__content p {
+            font-size: 1.2rem;
+            color: #475569;
+            max-width: 500px;
+        }
+        .hero__actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .hero__image img {
+            width: 100%;
+            height: auto;
+            border-radius: 1rem;
+        }
+
+        /* ===== DIFERENCIAIS ===== */
+        .diferenciais {
+            padding: 4rem 0;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #64748B;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        .diferenciais__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .card {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: transform var(--transition);
+            text-align: center;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+        }
+        .card__icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== CONSIGNADO ===== */
+        .destaque-consignado {
+            padding: 4rem 0;
+            background: var(--color-gray-light);
+        }
+        .destaque-consignado__inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .lista-publicos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+        .lista-publicos li {
+            background: var(--color-white);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            border: 1px solid var(--color-primary);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .destaque-consignado__image img {
+            width: 100%;
+            height: auto;
+            border-radius: 1rem;
+        }
+
+        /* ===== IMÓVEIS ===== */
+        .chamada-imoveis {
+            padding: 4rem 0;
+        }
+        .chamada-imoveis__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .card-imovel {
+            background: var(--color-white);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+        .card-imovel img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-imovel__body {
+            padding: 1.25rem;
+        }
+        .card-imovel__local {
+            color: #64748B;
+            font-size: 0.9rem;
+        }
+        .card-imovel__price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin: 0.5rem 0;
+        }
+        .badge--venda {
+            background: #10B981;
+            color: white;
+        }
+        .badge--aluguel {
+            background: #3B82F6;
+            color: white;
+        }
+        .chamada-imoveis__cta {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* ===== BLOG ===== */
+        .blog-destaque {
+            padding: 4rem 0;
+            background: var(--color-gray-light);
+        }
+        .blog-destaque__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .card-post {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+        .card-post time {
+            font-size: 0.85rem;
+            color: #94A3B8;
+        }
+        .card-post h3 a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+        .card-post h3 a:hover {
+            color: var(--color-gold);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--color-primary);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 3rem 0 1.5rem;
+        }
+        .footer__grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 2rem;
+        }
+        .footer a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+        .footer a:hover {
+            color: var(--color-gold);
+        }
+        .footer__brand p {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .footer__nav ul {
+            list-style: none;
+        }
+        .footer__nav ul li {
+            margin-bottom: 0.5rem;
+        }
+        .footer__contato a {
+            display: block;
+        }
+        .footer__bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 768px) {
+            .nav__toggle {
+                display: flex;
+            }
+            .nav__list {
+                display: none;
+                flex-direction: column;
+                background: white;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 2rem;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+                gap: 1.5rem;
+                align-items: flex-start;
+            }
+            .nav__list.is-open {
+                display: flex;
+            }
+            .hero__grid,
+            .destaque-consignado__inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero__content p {
+                margin: 0 auto;
+            }
+            .hero__actions {
+                justify-content: center;
+            }
+            .lista-publicos {
+                justify-content: center;
+            }
+            .footer__grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero__content h1 {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero__content h1 {
+                font-size: 1.8rem;
+            }
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="logo.png" alt="Barter Finance" class="logo">
-        <h1>BARTER FINANCE</h1>
-        <div class="divider"></div>
-        
-        <section class="about">
-            <h2>Quem Somos</h2>
-            <p>A Barter Finance é referência em inteligência imobiliária e soluções financeiras, combinando solidez institucional e agilidade. Atuamos com expertise técnica para viabilizar seus projetos e proteger seu patrimônio.</p>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header" role="banner">
+        <div class="container header__inner">
+            <a href="/" class="logo-text" aria-label="Barter Finance – Página inicial">
+                BARTER<span>.</span>FINANCE
+            </a>
+            <nav class="nav" role="navigation" aria-label="Menu principal">
+                <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu">
+                    <span class="sr-only">Abrir menu</span>
+                    <span class="hamburger"></span>
+                </button>
+                <ul id="nav-menu" class="nav__list">
+                    <li><a href="/" class="active">Home</a></li>
+                    <li><a href="#">Empresa</a></li>
+                    <li><a href="#">Soluções Financeiras</a></li>
+                    <li><a href="#">Mercado Imobiliário</a></li>
+                    <li><a href="#">Oportunidades</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#" class="btn btn--primary">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ===== HERO ===== -->
+        <section class="hero" aria-label="Destaque principal">
+            <div class="container hero__grid">
+                <div class="hero__content">
+                    <span class="hero__tag">Fundada em 2013</span>
+                    <h1>Soluções financeiras que <br /><span class="highlight">transformam vidas</span></h1>
+                    <p>Crédito consignado, financiamento imobiliário e muito mais com a segurança e transparência que você merece.</p>
+                    <div class="hero__actions">
+                        <a href="#" class="btn btn--primary">Conheça nossas soluções</a>
+                        <a href="#" class="btn btn--outline">Fale com um especialista</a>
+                    </div>
+                </div>
+                <div class="hero__image">
+                    <img src="https://picsum.photos/seed/finance/600/400" alt="Ilustração de crescimento financeiro" width="600" height="400" loading="lazy" />
+                </div>
+            </div>
         </section>
 
-        <div class="grid">
-            <div class="card">
-                <h3>Crédito Consignado</h3>
-                <p>Taxas competitivas e atendimento ágil para servidores e aposentados.</p>
-                <a href="https://wa.me/558396657809?text=Olá,%20gostaria%20de%20simular%20crédito%20consignado." class="btn" target="_blank">Simular Crédito</a>
+        <!-- ===== DIFERENCIAIS ===== -->
+        <section class="diferenciais" aria-labelledby="diferenciais-title">
+            <div class="container">
+                <h2 id="diferenciais-title" class="section-title">Por que a <span class="highlight">Barter Finance</span>?</h2>
+                <div class="diferenciais__grid">
+                    <article class="card">
+                        <div class="card__icon">🏦</div>
+                        <h3>+10 anos de experiência</h3>
+                        <p>Atuando com ética e resultados comprovados no mercado financeiro e imobiliário.</p>
+                    </article>
+                    <article class="card">
+                        <div class="card__icon">📊</div>
+                        <h3>Taxas competitivas</h3>
+                        <p>As melhores condições para consignado, financiamento e portabilidade.</p>
+                    </article>
+                    <article class="card">
+                        <div class="card__icon">🤝</div>
+                        <h3>Atendimento humano</h3>
+                        <p>Suporte próximo e personalizado, do primeiro contato à finalização.</p>
+                    </article>
+                </div>
             </div>
-            <div class="card">
-                <h3>Mercado Imobiliário</h3>
-                <p>Oportunidades exclusivas e gestão estratégica de ativos imobiliários.</p>
-                <a href="https://wa.me/558396657809?text=Olá,%20gostaria%20de%20conhecer%20as%20oportunidades%20imobiliárias." class="btn" target="_blank">Ver Imóveis</a>
+        </section>
+
+        <!-- ===== CRÉDITO CONSIGNADO ===== -->
+        <section class="destaque-consignado" aria-labelledby="consignado-title">
+            <div class="container">
+                <div class="destaque-consignado__inner">
+                    <div class="destaque-consignado__text">
+                        <h2 id="consignado-title">Crédito Consignado <span class="highlight">prioridade máxima</span></h2>
+                        <p>Para aposentados, pensionistas, servidores públicos (federais, estaduais e municipais) e militares. Taxas reduzidas e pagamento direto em folha.</p>
+                        <ul class="lista-publicos">
+                            <li>INSS</li><li>Aposentados</li><li>Pensionistas</li>
+                            <li>Servidores Federais</li><li>Servidores Estaduais</li><li>Servidores Municipais</li>
+                            <li>Exército</li><li>Marinha</li><li>Aeronáutica</li>
+                            <li>Convênios</li>
+                        </ul>
+                        <a href="#" class="btn btn--primary">Simular agora</a>
+                    </div>
+                    <div class="destaque-consignado__image">
+                        <img src="https://picsum.photos/seed/consignado/500/350" alt="Crédito consignado" width="500" height="350" loading="lazy" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== MERCADO IMOBILIÁRIO ===== -->
+        <section class="chamada-imoveis" aria-labelledby="imoveis-title">
+            <div class="container">
+                <h2 id="imoveis-title" class="section-title">Encontre o <span class="highlight">imóvel dos sonhos</span></h2>
+                <p class="section-subtitle">Apartamentos, casas, terrenos, galpões e muito mais – com fotos, descrição, valor e contato direto pelo WhatsApp.</p>
+                <div class="chamada-imoveis__grid">
+                    <article class="card-imovel">
+                        <img src="https://picsum.photos/seed/apartamento/400/300" alt="Apartamento" loading="lazy" />
+                        <div class="card-imovel__body">
+                            <h3>Apartamento – 120m²</h3>
+                            <p class="card-imovel__local">São Paulo – SP</p>
+                            <p class="card-imovel__price">R$ 850.000</p>
+                            <span class="badge badge--venda">Venda</span>
+                            <br />
+                            <a href="#" class="btn btn--whatsapp" style="margin-top:0.5rem;">Falar no WhatsApp</a>
+                        </div>
+                    </article>
+                    <article class="card-imovel">
+                        <img src="https://picsum.photos/seed/casa/400/300" alt="Casa" loading="lazy" />
+                        <div class="card-imovel__body">
+                            <h3>Casa – 250m²</h3>
+                            <p class="card-imovel__local">Campinas – SP</p>
+                            <p class="card-imovel__price">R$ 1.200.000</p>
+                            <span class="badge badge--venda">Venda</span>
+                            <br />
+                            <a href="#" class="btn btn--whatsapp" style="margin-top:0.5rem;">Falar no WhatsApp</a>
+                        </div>
+                    </article>
+                    <article class="card-imovel">
+                        <img src="https://picsum.photos/seed/terreno/400/300" alt="Terreno" loading="lazy" />
+                        <div class="card-imovel__body">
+                            <h3>Terreno – 500m²</h3>
+                            <p class="card-imovel__local">Barueri – SP</p>
+                            <p class="card-imovel__price">R$ 450.000</p>
+                            <span class="badge badge--venda">Venda</span>
+                            <br />
+                            <a href="#" class="btn btn--whatsapp" style="margin-top:0.5rem;">Falar no WhatsApp</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="chamada-imoveis__cta">
+                    <a href="#" class="btn btn--outline">Ver todos os imóveis</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== BLOG ===== -->
+        <section class="blog-destaque" aria-labelledby="blog-title">
+            <div class="container">
+                <h2 id="blog-title" class="section-title">Insights e <span class="highlight">oportunidades</span></h2>
+                <div class="blog-destaque__grid">
+                    <article class="card-post">
+                        <time datetime="2026-06-20">20 de junho de 2026</time>
+                        <h3><a href="#">Como conseguir crédito consignado com as melhores taxas</a></h3>
+                        <p>Dicas práticas para aposentados e servidores públicos.</p>
+                    </article>
+                    <article class="card-post">
+                        <time datetime="2026-06-18">18 de junho de 2026</time>
+                        <h3><a href="#">Mercado imobiliário 2026: tendências e oportunidades</a></h3>
+                        <p>O que esperar para investimentos em imóveis neste ano.</p>
+                    </article>
+                    <article class="card-post">
+                        <time datetime="2026-06-15">15 de junho de 2026</time>
+                        <h3><a href="#">Portabilidade de crédito: como economizar até 40%</a></h3>
+                        <p>Entenda como transferir sua dívida para um banco com taxas menores.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" role="contentinfo">
+        <div class="container footer__grid">
+            <div class="footer__brand">
+                <h2 style="color:white; font-size:1.8rem;">BARTER<span style="color:var(--color-gold);">.</span>FINANCE</h2>
+                <p>Soluções financeiras e imobiliárias com transparência e compromisso.</p>
+            </div>
+            <nav class="footer__nav" aria-label="Mapa do site">
+                <ul>
+                    <li><a href="#">Empresa</a></li>
+                    <li><a href="#">Soluções Financeiras</a></li>
+                    <li><a href="#">Mercado Imobiliário</a></li>
+                    <li><a href="#">Oportunidades</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="footer__contato">
+                <p><strong>Fale conosco</strong></p>
+                <a href="tel:+5511999999999">+55 (11) 99999-9999</a>
+                <a href="mailto:contato@barterfinance.com.br">contato@barterfinance.com.br</a>
             </div>
         </div>
-    </div>
+        <div class="footer__bottom">
+            <p>&copy; 2026 Barter Finance – Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT (tudo embutido para funcionar no celular) ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- MENU MOBILE ---
+            const toggle = document.querySelector('.nav__toggle');
+            const menu = document.getElementById('nav-menu');
+
+            if (toggle && menu) {
+                toggle.addEventListener('click', function() {
+                    const expanded = this.getAttribute('aria-expanded') === 'true' ? false : true;
+                    this.setAttribute('aria-expanded', expanded);
+                    menu.classList.toggle('is-open');
+                });
+
+                // Fechar ao clicar em um link
+                document.querySelectorAll('.nav__list a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        menu.classList.remove('is-open');
+                        toggle.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+
+            // --- PLACEHOLDER PARA ANALYTICS (futuro) ---
+            console.log('Barter Finance - site carregado com sucesso!');
+        });
+    </script>
+
+    <!-- JSON-LD (Schema.org) -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FinancialService",
+            "name": "Barter Finance",
+            "foundingDate": "2013",
+            "description": "Soluções financeiras e imobiliárias com foco em crédito consignado.",
+            "url": "https://barterfinance.com.br",
+            "telephone": "+5511999999999",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "São Paulo",
+                "addressRegion": "SP",
+                "addressCountry": "BR"
+            }
+        }
+    </script>
 </body>
 </html>
