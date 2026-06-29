@@ -5,44 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barter Finance | Soluções Imobiliárias e Financeiras</title>
     <style>
-        :root { --navy: #0a1b3d; --gold: #c5a059; --bg: #ffffff; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--navy); margin: 0; text-align: center; }
-        .container { max-width: 800px; margin: auto; padding: 40px 20px; }
+        :root { 
+            --navy: #0a1b3d; 
+            --gold: #c5a059; 
+            --white: #ffffff;
+            --text-light: #e0e0e0;
+        }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--navy); color: var(--text-light); margin: 0; text-align: center; }
+        .container { max-width: 800px; margin: auto; padding: 60px 20px; }
         .logo { width: 220px; margin-bottom: 25px; }
-        h1 { color: var(--navy); font-size: 1.8em; margin: 10px 0; text-transform: uppercase; letter-spacing: 1px; }
-        .subtitle { color: #555; font-size: 1.1em; margin-bottom: 30px; }
-        .divider { width: 60px; height: 4px; background: var(--gold); margin: 0 auto 40px auto; }
+        h1 { color: var(--white); font-size: 1.8em; margin: 10px 0; text-transform: uppercase; letter-spacing: 2px; }
+        .subtitle { color: var(--gold); font-size: 1.1em; margin-bottom: 30px; text-transform: uppercase; }
+        .divider { width: 80px; height: 3px; background: var(--gold); margin: 0 auto 40px auto; }
         
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { border: 1px solid #e0e0e0; padding: 30px; border-radius: 8px; transition: 0.3s; }
-        .card:hover { border-color: var(--gold); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card { 
+            background: rgba(255, 255, 255, 0.05); 
+            padding: 40px 30px; 
+            border-radius: 4px; 
+            border: 1px solid rgba(197, 160, 89, 0.3); 
+            transition: 0.4s; 
+        }
+        .card:hover { border-color: var(--gold); background: rgba(255, 255, 255, 0.08); }
         
-        h3 { color: var(--navy); margin-top: 0; }
-        .btn { display: inline-block; margin-top: 15px; padding: 12px 30px; background: var(--navy); color: #fff; text-decoration: none; border-radius: 4px; font-weight: 600; border: 1px solid var(--navy); }
-        .btn:hover { background: var(--gold); border-color: var(--gold); }
+        h3 { color: var(--white); margin-top: 0; }
+        .btn { 
+            display: inline-block; 
+            margin-top: 20px; 
+            padding: 12px 30px; 
+            background: var(--gold); 
+            color: var(--navy); 
+            text-decoration: none; 
+            border-radius: 2px; 
+            font-weight: bold; 
+            transition: 0.3s;
+        }
+        .btn:hover { background: var(--white); color: var(--navy); }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Certifique-se que sua logomarca no GitHub se chama logo.png -->
         <img src="logo.png" alt="Barter Finance Logo" class="logo">
         <h1>BARTER FINANCE</h1>
-        <p class="subtitle">Soluções Imobiliárias e Financeiras</p>
+        <p class="subtitle">Soluções que geram resultados</p>
         <div class="divider"></div>
 
         <div class="grid">
-            <!-- Funil de Vendas: Crédito -->
+            <!-- Crédito Consignado -->
             <div class="card">
                 <h3>Crédito Consignado</h3>
-                <p>Taxas diferenciadas e agilidade para sua solicitação.</p>
-                <a href="https://wa.me/5583999999999?text=Olá,%20tenho%20interesse%20em%20uma%20simulação%20de%20crédito%20na%20Barter%20Finance." class="btn">Solicitar Simulação</a>
+                <p>Taxas diferenciadas e agilidade total para a sua solicitação.</p>
+                <a href="https://wa.me/558396657809?text=Olá,%20gostaria%20de%20mais%20informações%20sobre%20Crédito%20Consignado." class="btn" target="_blank">Simular Crédito</a>
             </div>
 
-            <!-- Funil de Vendas: Imobiliário -->
+            <!-- Mercado Imobiliário -->
             <div class="card">
                 <h3>Mercado Imobiliário</h3>
-                <p>Consulte nossas oportunidades e áreas exclusivas.</p>
-                <a href="https://wa.me/5583999999999?text=Olá,%20tenho%20interesse%20em%20conhecer%20os%20imóveis%20da%20Barter%20Finance." class="btn">Ver Catálogo</a>
+                <p>Oportunidades exclusivas, apartamentos e áreas selecionadas.</p>
+                <a href="https://wa.me/558396657809?text=Olá,%20gostaria%20de%20conhecer%20os%20imóveis%20e%20áreas%20da%20Barter%20Finance." class="btn" target="_blank">Ver Imóveis</a>
             </div>
         </div>
     </div>
