@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Barter Finance – Soluções Financeiras e Imobiliárias</title>
-    <meta name="description" content="Há mais de 10 anos oferecendo crédito consignado, financiamento imobiliário e soluções financeiras com transparência." />
+    <title>Barter Finance – Soluções Imobiliárias e Financeiras</title>
+    <meta name="description" content="Crédito consignado, financiamento imobiliário e soluções financeiras com transparência. Fundada em 2013." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
@@ -95,7 +95,7 @@
             background: #1DA851;
         }
 
-        /* ===== HEADER / NAVEGAÇÃO ===== */
+        /* ===== HEADER ===== */
         .header {
             padding: 1rem 0;
             border-bottom: 1px solid rgba(10, 27, 61, 0.08);
@@ -109,18 +109,32 @@
             justify-content: space-between;
             align-items: center;
         }
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
         .logo img {
             height: 48px;
             width: auto;
+            margin-right: 0.5rem;
         }
         .logo-text {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--color-primary);
-            text-decoration: none;
+            letter-spacing: -0.5px;
         }
         .logo-text span {
             color: var(--color-gold);
+        }
+        .logo-sub {
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: #64748B;
+            letter-spacing: 1px;
+            display: block;
+            margin-top: -0.2rem;
         }
 
         .nav__toggle {
@@ -363,7 +377,7 @@
         }
         .footer__grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1.5fr;
             gap: 2rem;
         }
         .footer a {
@@ -386,6 +400,18 @@
         }
         .footer__contato a {
             display: block;
+        }
+        .footer__contato .whatsapp-link {
+            font-weight: 600;
+            color: #25D366;
+        }
+        .footer__endereco {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        .footer__endereco strong {
+            color: white;
         }
         .footer__bottom {
             text-align: center;
@@ -440,6 +466,9 @@
             .section-title {
                 font-size: 1.8rem;
             }
+            .footer__endereco {
+                text-align: center;
+            }
         }
         @media (max-width: 480px) {
             .hero__content h1 {
@@ -457,8 +486,13 @@
     <!-- ===== HEADER ===== -->
     <header class="header" role="banner">
         <div class="container header__inner">
-            <a href="/" class="logo-text" aria-label="Barter Finance – Página inicial">
-                BARTER<span>.</span>FINANCE
+            <a href="/" class="logo" aria-label="Barter Finance – Página inicial">
+                <!-- COLOQUE AQUI A IMAGEM DA SUA LOGO (ex: logo.png) -->
+                <!-- <img src="assets/images/logo.png" alt="Barter Finance" /> -->
+                <div>
+                    <span class="logo-text">BARTER<span>.</span>FINANCE</span>
+                    <span class="logo-sub">SOLUÇÕES IMOBILIÁRIAS E FINANCEIRAS</span>
+                </div>
             </a>
             <nav class="nav" role="navigation" aria-label="Menu principal">
                 <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu">
@@ -472,7 +506,7 @@
                     <li><a href="#">Mercado Imobiliário</a></li>
                     <li><a href="#">Oportunidades</a></li>
                     <li><a href="#">Blog</a></li>
-                    <li><a href="#" class="btn btn--primary">Contato</a></li>
+                    <li><a href="https://wa.me/5583996657809?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20os%20serviços%20da%20Barter%20Finance." class="btn btn--primary">Contato</a></li>
                 </ul>
             </nav>
         </div>
@@ -487,11 +521,12 @@
                     <h1>Soluções financeiras que <br /><span class="highlight">transformam vidas</span></h1>
                     <p>Crédito consignado, financiamento imobiliário e muito mais com a segurança e transparência que você merece.</p>
                     <div class="hero__actions">
-                        <a href="#" class="btn btn--primary">Conheça nossas soluções</a>
-                        <a href="#" class="btn btn--outline">Fale com um especialista</a>
+                        <a href="https://wa.me/5583996657809?text=Olá!%20Gostaria%20de%20simular%20um%20crédito%20consignado." class="btn btn--primary">Conheça nossas soluções</a>
+                        <a href="https://wa.me/5583996657809?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20da%20Barter%20Finance." class="btn btn--outline">Fale com um especialista</a>
                     </div>
                 </div>
                 <div class="hero__image">
+                    <!-- Substitua por uma imagem real -->
                     <img src="https://picsum.photos/seed/finance/600/400" alt="Ilustração de crescimento financeiro" width="600" height="400" loading="lazy" />
                 </div>
             </div>
@@ -534,9 +569,10 @@
                             <li>Exército</li><li>Marinha</li><li>Aeronáutica</li>
                             <li>Convênios</li>
                         </ul>
-                        <a href="#" class="btn btn--primary">Simular agora</a>
+                        <a href="https://wa.me/5583996657809?text=Olá!%20Quero%20simular%20meu%20crédito%20consignado%20com%20a%20Barter%20Finance." class="btn btn--primary">Simular agora</a>
                     </div>
                     <div class="destaque-consignado__image">
+                        <!-- Substitua por uma imagem real -->
                         <img src="https://picsum.photos/seed/consignado/500/350" alt="Crédito consignado" width="500" height="350" loading="lazy" />
                     </div>
                 </div>
@@ -557,7 +593,7 @@
                             <p class="card-imovel__price">R$ 850.000</p>
                             <span class="badge badge--venda">Venda</span>
                             <br />
-                            <a href="#" class="btn btn--whatsapp" style="margin-top:0.5rem;">Falar no WhatsApp</a>
+                            <a href="https://wa.me/5583996657809?text=Olá!%20Tenho%20interesse%20no%20Apartamento%20de%20120m²%20em%20São%20Paulo%20–%20R$%20850.000." class="btn btn--whatsapp" style="margin-top:0.5rem;">Falar no WhatsApp</a>
                         </div>
                     </article>
                     <article class="card-imovel">
@@ -568,7 +604,7 @@
                             <p class="card-imovel__price">R$ 1.200.000</p>
                             <span class="badge badge--venda">Venda</span>
                             <br />
-                            <a href="#" class="btn btn--whatsapp" style="margin-top:0.5rem;">Falar no WhatsApp</a>
+                            <a href="https://wa.me/5583996657809?text=Olá!%20Tenho%20interesse%20na%20Casa%20de%20250m²%20em%20Campinas%20–%20R$%201.200.000." class="btn btn--whatsapp" style="margin-top:0.5rem;">Falar no WhatsApp</a>
                         </div>
                     </article>
                     <article class="card-imovel">
@@ -579,12 +615,12 @@
                             <p class="card-imovel__price">R$ 450.000</p>
                             <span class="badge badge--venda">Venda</span>
                             <br />
-                            <a href="#" class="btn btn--whatsapp" style="margin-top:0.5rem;">Falar no WhatsApp</a>
+                            <a href="https://wa.me/5583996657809?text=Olá!%20Tenho%20interesse%20no%20Terreno%20de%20500m²%20em%20Barueri%20–%20R$%20450.000." class="btn btn--whatsapp" style="margin-top:0.5rem;">Falar no WhatsApp</a>
                         </div>
                     </article>
                 </div>
                 <div class="chamada-imoveis__cta">
-                    <a href="#" class="btn btn--outline">Ver todos os imóveis</a>
+                    <a href="https://wa.me/5583996657809?text=Olá!%20Gostaria%20de%20ver%20todos%20os%20imóveis%20disponíveis%20na%20Barter%20Finance." class="btn btn--outline">Ver todos os imóveis</a>
                 </div>
             </div>
         </section>
@@ -614,12 +650,13 @@
         </section>
     </main>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- ===== FOOTER ATUALIZADO ===== -->
     <footer class="footer" role="contentinfo">
         <div class="container footer__grid">
             <div class="footer__brand">
                 <h2 style="color:white; font-size:1.8rem;">BARTER<span style="color:var(--color-gold);">.</span>FINANCE</h2>
-                <p>Soluções financeiras e imobiliárias com transparência e compromisso.</p>
+                <p style="font-size:0.8rem; letter-spacing:1px;">SOLUÇÕES IMOBILIÁRIAS E FINANCEIRAS</p>
+                <p>Transparência, ética e compromisso com seus resultados.</p>
             </div>
             <nav class="footer__nav" aria-label="Mapa do site">
                 <ul>
@@ -628,13 +665,19 @@
                     <li><a href="#">Mercado Imobiliário</a></li>
                     <li><a href="#">Oportunidades</a></li>
                     <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contato</a></li>
+                    <li><a href="https://wa.me/5583996657809?text=Olá!%20Gostaria%20de%20falar%20com%20a%20Barter%20Finance.">Contato</a></li>
                 </ul>
             </nav>
             <div class="footer__contato">
-                <p><strong>Fale conosco</strong></p>
-                <a href="tel:+5511999999999">+55 (11) 99999-9999</a>
-                <a href="mailto:contato@barterfinance.com.br">contato@barterfinance.com.br</a>
+                <p><strong>Fale Conosco</strong></p>
+                <a href="https://wa.me/5583996657809" class="whatsapp-link" target="_blank">WhatsApp: (83) 99665-7809</a>
+                <a href="mailto:ceobarterfinance@gmail.com">E-mail: ceobarterfinance@gmail.com</a>
+                <div class="footer__endereco">
+                    <strong>Endereço:</strong><br />
+                    Rua Pastor José Alves de Oliveira, 234 – Pavimento Superior<br />
+                    Centro, Cabedelo – PB<br />
+                    CEP: 58100-222
+                </div>
             </div>
         </div>
         <div class="footer__bottom">
@@ -642,10 +685,10 @@
         </div>
     </footer>
 
-    <!-- ===== JAVASCRIPT (tudo embutido para funcionar no celular) ===== -->
+    <!-- ===== JAVASCRIPT ===== -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // --- MENU MOBILE ---
+            // Menu mobile
             const toggle = document.querySelector('.nav__toggle');
             const menu = document.getElementById('nav-menu');
 
@@ -656,7 +699,6 @@
                     menu.classList.toggle('is-open');
                 });
 
-                // Fechar ao clicar em um link
                 document.querySelectorAll('.nav__list a').forEach(function(link) {
                     link.addEventListener('click', function() {
                         menu.classList.remove('is-open');
@@ -665,7 +707,6 @@
                 });
             }
 
-            // --- PLACEHOLDER PARA ANALYTICS (futuro) ---
             console.log('Barter Finance - site carregado com sucesso!');
         });
     </script>
@@ -679,11 +720,13 @@
             "foundingDate": "2013",
             "description": "Soluções financeiras e imobiliárias com foco em crédito consignado.",
             "url": "https://barterfinance.com.br",
-            "telephone": "+5511999999999",
+            "telephone": "+5583996657809",
             "address": {
                 "@type": "PostalAddress",
-                "addressLocality": "São Paulo",
-                "addressRegion": "SP",
+                "streetAddress": "Rua Pastor José Alves de Oliveira, 234 – Pavimento Superior, Centro",
+                "addressLocality": "Cabedelo",
+                "addressRegion": "PB",
+                "postalCode": "58100-222",
                 "addressCountry": "BR"
             }
         }
